@@ -1,6 +1,6 @@
 entrypoint = "index.js"
 
-run = "npm run start"
+run = "./load_cert.sh && npm run start"
 
 modules = ["nodejs-20"]
 hidden = [".config", "package-lock.json"]
