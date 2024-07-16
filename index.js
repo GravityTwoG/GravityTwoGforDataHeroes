@@ -34,7 +34,7 @@ async function bootstrap() {
   console.log("Migrated schema");
 
   const rows = await loadCharactersToDB(conn);
-  console.log(`Characters added: ${(rows, rows.rowCount)}`);
+  console.log(`Characters added: ${rows}`);
 
   const data = await conn.query(`SELECT COUNT(*) FROM "GravityTwoG"`);
   console.log(`Table GravityTwoG contains: ${data.rows[0].count} characters`);
@@ -49,7 +49,7 @@ function migrate(conn) {
     `
     CREATE TABLE IF NOT EXISTS "GravityTwoG"(
       id serial PRIMARY KEY NOT NULL,
-      name text NOT NULL UNIQUE,
+      name text NOT NULL,
       data jsonb NOT NULL
     );
     `,
